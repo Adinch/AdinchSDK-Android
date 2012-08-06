@@ -3,9 +3,6 @@ AdinchSDK-Android
 
 The integration of the Adinch advertising library.
 -----------------
-This part of our functionality meets the requirements of <a href=http://www.apache.org/licenses/LICENSE-2.0.html>Apache License, Version 2.0</a>. All copyrights respected.
-
-The development is based on <a href=http://code.google.com/p/adwhirl/>the source codes</a> of <a href=https://www.adwhirl.com/>AdWhirl.</a>
 
 To integrate Adinch SDK into your application you need to make next steps:
 
@@ -159,3 +156,8 @@ Remember to specify definition:
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 in AndroidManifest.xml
+
+
+This part of our functionality meets the requirements of <a href=http://www.apache.org/licenses/LICENSE-2.0.html>Apache License, Version 2.0</a>. All copyrights respected.
+
+The development is based on <a href=http://code.google.com/p/adwhirl/>the source codes</a> of <a href=https://www.adwhirl.com/>AdWhirl.</a>
