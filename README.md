@@ -57,7 +57,6 @@ in the initialization method activity register:
     <uses-permission android:name="android.permission.INTERNET" />
   And the following optional permissions
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -147,7 +146,11 @@ name of claim 1, and initialize it to run the library Adinch:
     }
 Remember to specify definition:
 
+   Add the following mandatory permissions to AndroidManifest.xml
+
     <uses-permission android:name="android.permission.INTERNET" />
+  And the following optional permissions
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
