@@ -3,7 +3,8 @@ AdinchSDK-Android
 
 The integration of the Adinch advertising library.
 -----------------
-This part of our functionality is based on <a href=http://www.apache.org/licenses/LICENSE-2.0.html>Apache License, Version 2.0</a>. All copyrights respected.
+This part of our functionality meets the requirements of <a href=http://www.apache.org/licenses/LICENSE-2.0.html>Apache License, Version 2.0</a>. All copyrights respected.
+The development is based on the source codes(вставить ссылку http://code.google.com/p/adwhirl/) of AdWhirl.
 
 To integrate Adinch SDK into your application you need to make next steps:
 
