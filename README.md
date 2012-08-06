@@ -86,6 +86,9 @@ in the initialization method activity register:
         <!-- adfonic integration -->
         <activity android:name=" com.adfonic.android.AdfonicActivity " 
                   android:configChanges="keyboardHidden|orientation|keyboard" />
+        <!-- mobfox integration -->
+        <activity android:name=" com.mobfox.sdk.InAppWebView" 
+                  android:configChanges="keyboardHidden|orientation|keyboard" />
 The integration of the Adinch advertising library into AdWhirl
 -----------------
 Here are the steps to integrate an advertising network Adinch into  AdWhirl by a mechanism CustomEvents.
