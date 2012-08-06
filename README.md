@@ -2,6 +2,7 @@ AdinchSDK-Android
 =================
 
 The integration of the Adinch advertising library.
+-----------------
 This part of our functionality is based on <a href=http://www.apache.org/licenses/LICENSE-2.0.html>Apache License, Version 2.0</a>. All copyrights respected.
 
 To integrate Adinch SDK into your application you need to make next steps:
@@ -51,8 +52,11 @@ in the initialization method activity register:
   adinch key 
   
     <meta-data android:value="<YOUR_ADINCH_KEY>" android:name="ADINCH_KEY" />
-  permissions:
-  
+  Add the following mandatory permissions to AndroidManifest.xml
+
+    <uses-permission android:name="android.permission.INTERNET" />
+  And the following optional permissions
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -81,4 +85,74 @@ in the initialization method activity register:
         <!-- InMobi integration -->
         <activity android:name="com.inmobi.androidsdk.IMBrowserActivity"
                   android:configChanges="keyboardHidden|orientation|keyboard" />
-  
+The integration of the Adinch advertising library into AdWhirl
+-----------------
+Here are the steps to integrate an advertising network Adinch into  AdWhirl by a mechanism CustomEvents.
+
+1. In the interface of  AdWhirl advertising managing platform you need to push the button “+Add Custom Event”  at the page “Ad Networl settings” and specify the name of the method that will initialize the Adinch library.
+
+2. You must declare the interface  AdWhirlInterface, such as
+
+    extends Activity implements AdWhirlInterface
+    @Override
+    public void adWhirlGeneric() {
+        Log.v(TAG, "adWhirlGeneric()");
+    }
+3. After that, initialize the library according to its AdWhirl documentation:
+
+    AdWhirlManager.setConfigExpireTimeout(1000 * 15);
+    AdWhirlTargeting.setAge(0);
+    AdWhirlTargeting.setGender(AdWhirlTargeting.Gender.MALE);
+    AdWhirlTargeting.setKeywords("<YOUR_KEYWORDS>");
+    AdWhirlTargeting.setPostalCode("<YOUR_POSTAL_CODE");
+    AdWhirlTargeting.setTestMode(true);
+    adWhirlLayout = new AdWhirlLayout(this, "<YOUR_ADWHIRL_KEY>");
+    RelativeLayout.LayoutParams layoutParams = new 	RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+    int diWidth = 320;
+    int diHeight = 52;
+    float density = (float) getResources().getDisplayMetrics().density;
+    /**You must specify the interface through which AdWhirl will interact with the application*/
+    adWhirlLayout.setAdWhirlInterface(this); // parameter specifies the implementation of the interface AdWhirlInterface
+    adWhirlLayout.setMaxWidth((int) (diWidth * density));
+    adWhirlLayout.setMaxHeight((int) (diHeight * density));
+    layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+    RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.ads_layout);
+    mainLayout.addView(adWhirlLayout, layoutParams);
+    mainLayout.invalidate();
+
+    // The parameter must send an application context
+    ad = new AdsView(this, AdsView.MANUAL);
+    ad.setCallback(new IAdinchCallback() {
+        @Override
+        public void onAdsLoadingOk() {
+        }
+        @Override
+        public void onAdsLoadingError(int code, String msg) {
+            adWhirlLayout.rollover();
+        }
+    });
+    /**
+    Connecting the library to AdWhirl
+    */
+    adWhirlLayout.handler.post(new AdWhirlLayout.ViewAdRunnable(adWhirlLayout, ad));
+4. You must implement a method that matches the naming
+name of claim 1, and initialize it to run the library Adinch:
+
+    public void adinchEvent(){
+        /**Initialization of the Adinch library within the AdWhirl*/
+        adWhirlLayout.adWhirlManager.resetRollover();
+        ad.show();
+        adWhirlLayout.handler.post(new AdWhirlLayout.ViewAdRunnable(adWhirlLayout, ad));
+        adWhirlLayout.rotateThreadedDelayed();
+    }
+
+Remember to specify definition:
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+in AndroidManifest.xml
