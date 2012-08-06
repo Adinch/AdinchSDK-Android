@@ -49,19 +49,17 @@ To integrate Adinch SDK into your application you need to make next steps:
     AdinchLayout adinchLayout = (AdinchLayout)findViewById(R.id.adsLayout);
 
 4)обязательно добавить в Android Manifest:
-  - ключ adinch 
+  ключ adinch 
     <meta-data android:value="<YOUR_ADINCH_KEY>" android:name="ADINCH_KEY" />
     
-  - permissions:
-
+  permissions:
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  - необходимые activity для подключаемых реклам:
-
+  необходимые activity для подключаемых реклам:
     <activity
             android:name="com.google.ads.AdActivity"
             android:configChanges="orientation|keyboard|keyboardHidden|screenLayout|uiMode|screenSize|smallestScreenSize" />
