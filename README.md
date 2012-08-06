@@ -89,16 +89,16 @@ The integration of the Adinch advertising library into AdWhirl
 -----------------
 Here are the steps to integrate an advertising network Adinch into  AdWhirl by a mechanism CustomEvents.
 
-1. In the interface of  AdWhirl advertising managing platform you need to push the button “+Add Custom Event”  at the page “Ad Networl settings” and specify the name of the method that will initialize the Adinch library.
+1) In the interface of  AdWhirl advertising managing platform you need to push the button “+Add Custom Event”  at the page “Ad Networl settings” and specify the name of the method that will initialize the Adinch library.
 
-2. You must declare the interface  AdWhirlInterface, such as
+2) You must declare the interface  AdWhirlInterface, such as
 
-    extends Activity implements AdWhirlInterface
+    extends Activity implements AdWhirlInterface{
     @Override
     public void adWhirlGeneric() {
         Log.v(TAG, "adWhirlGeneric()");
-    }
-3. After that, initialize the library according to its AdWhirl documentation:
+    }}
+3) After that, initialize the library according to its AdWhirl documentation:
 
     AdWhirlManager.setConfigExpireTimeout(1000 * 15);
     AdWhirlTargeting.setAge(0);
@@ -135,7 +135,7 @@ Here are the steps to integrate an advertising network Adinch into  AdWhirl by a
     Connecting the library to AdWhirl
     */
     adWhirlLayout.handler.post(new AdWhirlLayout.ViewAdRunnable(adWhirlLayout, ad));
-4. You must implement a method that matches the naming
+4) You must implement a method that matches the naming
 name of claim 1, and initialize it to run the library Adinch:
 
     public void adinchEvent(){
@@ -145,7 +145,6 @@ name of claim 1, and initialize it to run the library Adinch:
         adWhirlLayout.handler.post(new AdWhirlLayout.ViewAdRunnable(adWhirlLayout, ad));
         adWhirlLayout.rotateThreadedDelayed();
     }
-
 Remember to specify definition:
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -154,5 +153,4 @@ Remember to specify definition:
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
 in AndroidManifest.xml
