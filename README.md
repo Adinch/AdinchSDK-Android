@@ -83,6 +83,9 @@ in the initialization method activity register:
         <!-- InMobi integration -->
         <activity android:name="com.inmobi.androidsdk.IMBrowserActivity"
                   android:configChanges="keyboardHidden|orientation|keyboard" />
+        <!-- adfonic integration -->
+        <activity android:name=" com.adfonic.android.AdfonicActivity " 
+                  android:configChanges="keyboardHidden|orientation|keyboard" />
 The integration of the Adinch advertising library into AdWhirl
 -----------------
 Here are the steps to integrate an advertising network Adinch into  AdWhirl by a mechanism CustomEvents.
