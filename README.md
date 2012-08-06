@@ -2,6 +2,7 @@ AdinchSDK-Android
 =================
 
 The integration of the Adinch advertising library
+This part of our functionality is based on Apache License, Version 2.0 (и сделать, чтобы можно было перейти на нее). All copyrights respected.
 ---------------------
 
 To integrate Adinch SDK into your application you need to make next steps:
@@ -21,7 +22,7 @@ To integrate Adinch SDK into your application you need to make next steps:
     AdinchTargeting.setKeywords("<YOUR_KEYWORDS>");
     AdinchTargeting.setPostalCode("<YOUR_POSTAL_CODE");
     AdinchTargeting.setTestMode(true);
-3) Вы можете добавить AdinchLayout в коде:
+3) You can add AdinchLayout in the code:
 
     adinchLayout = new AdinchLayout(this, "<YOUR_ADINCH_KEY>");
     RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
@@ -36,7 +37,7 @@ To integrate Adinch SDK into your application you need to make next steps:
     RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.ads_layout);
     mainLayout.addView(adinchLayout, layoutParams);
     mainLayout.invalidate();
-или прописать в xml файле activity:
+or register to xml file activity:
 
     <com.adinch.mediation.AdinchLayout
         android:id="@+id/adsLoyout"        
@@ -44,11 +45,11 @@ To integrate Adinch SDK into your application you need to make next steps:
         android:layout_height="50dp"
         android:layout_gravity="center_vertical"/>
 
-в методе инициализации activity прописать:
+in the initialization method activity register:
 
     AdinchLayout adinchLayout = (AdinchLayout)findViewById(R.id.adsLayout);
-4)обязательно добавить в Android Manifest:
-  ключ adinch 
+4)necessarily add to the Android Manifest:
+  adinch key 
   
     <meta-data android:value="<YOUR_ADINCH_KEY>" android:name="ADINCH_KEY" />
   permissions:
@@ -59,7 +60,7 @@ To integrate Adinch SDK into your application you need to make next steps:
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  необходимые activity для подключаемых реклам:
+  required activity for connected advertising:
   
     <activity
             android:name="com.google.ads.AdActivity"
