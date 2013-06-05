@@ -1,0 +1,20 @@
+<resources>
+
+    <attr name="keyAdinch" format="string" />
+
+    <declare-styleable name="AdinchLayout320x50">
+        <attr name="keyAdinch" />
+    </declare-styleable>
+    <declare-styleable name="AdinchLayout300x250">
+        <attr name="keyAdinch" />
+    </declare-styleable>
+    
+    <declare-styleable name="AdsView320x50">
+        <attr name="keyAdinch" />
+    </declare-styleable>
+    
+    <declare-styleable name="AdsView300x250">
+        <attr name="keyAdinch" />
+    </declare-styleable>
+
+</resources>
