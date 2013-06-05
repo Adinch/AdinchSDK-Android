@@ -6,14 +6,18 @@ The integration of the Adinch advertising library.
 
 To integrate Adinch SDK into your application you need to make next steps:
 
-1) You must declare the interface  AdinchInterface, such as
+
+1) Add please to project to the folder libs adinch_sdk.jar, to the folder res/values file adinch_attrs.xml
+
+To add an advertisement must be placed on activity AdinchLayout300x250 for banners size 300x250 or AdinchLayout320x50 for banners  size of 320x50
+2) You must declare the interface  AdinchInterface, such as
 
     extends Activity implements AdinchInterface{
       ...
     @Override
       public void adinchGeneric() {}
       }
-2) After that, initialize the library according to its Adinch documentation:
+3) After that, initialize the library according to its Adinch documentation:
 
     AdinchManager.setConfigExpireTimeout(1000 * 15);
     AdinchTargeting.setAge(0);
@@ -21,12 +25,12 @@ To integrate Adinch SDK into your application you need to make next steps:
     AdinchTargeting.setKeywords("<YOUR_KEYWORDS>");
     AdinchTargeting.setPostalCode("<YOUR_POSTAL_CODE");
     AdinchTargeting.setTestMode(true);
-3) You can add AdinchLayout in the code:
+4) You can add AdinchLayout in the code:
 
-    adinchLayout = new AdinchLayout(this, "<YOUR_ADINCH_KEY>");
+    adinchLayout = new AdinchLayout320x50(this, "<YOUR_ADINCH_KEY>"); // or  new AdinchLayout300x250(this, "<YOUR_ADINCH_KEY>");
     RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-    int diWidth = 320;
-    int diHeight = 52;
+    int diWidth = 320; // or 300
+    int diHeight = 50; // or 250
     float density = (float) getResources().getDisplayMetrics().density;
     /**You must specify the interface through which Adinch will interact with the application*/
     adinchLayout.setAdinchInterface(this); // parameter specifies the implementation of the interface AdinchInterface
@@ -38,19 +42,25 @@ To integrate Adinch SDK into your application you need to make next steps:
     mainLayout.invalidate();
 or register to xml file activity:
 
-    <com.adinch.mediation.AdinchLayout
-        android:id="@+id/adsLoyout"        
+    <com.adinch.mediation.AdinchLayout300x250 
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adsLoyout"
+        android:layout_width="300dp"
+        android:layout_height="250dp"     
+        ads:keyAdinch="<YOUR_ADINCH_KEY>" />
+or
+
+    <com.adinch.mediation.AdinchLayout320x50 
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adsLoyout"
         android:layout_width="320dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_vertical"/>
+        android:layout_height="50dp"      
+        ads:keyAdinch="<YOUR_ADINCH_KEY>" />
 
 in the initialization method activity register:
 
     AdinchLayout adinchLayout = (AdinchLayout)findViewById(R.id.adsLayout);
 4)necessarily add to the Android Manifest:
-  adinch key 
-  
-    <meta-data android:value="<YOUR_ADINCH_KEY>" android:name="ADINCH_KEY" />
   Add the following mandatory permissions to AndroidManifest.xml
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -125,7 +135,7 @@ Here are the steps to integrate an advertising network Adinch into  AdWhirl by a
     mainLayout.invalidate();
 
     // The parameter must send an application context
-    ad = new AdsView(this, AdsView.MANUAL);
+    ad = new AdsView320x50(this, "<YOUR_ADINCH_KEY>");
     ad.setCallback(new IAdinchCallback() {
         @Override
         public void onAdsLoadingOk() {
