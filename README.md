@@ -42,7 +42,7 @@ in the initialization method activity register:
 3)You can add callback to AdinchLayout
 
     // The parameter must send an application context
-    adinchLayout.setCallback(new IAdsAdinchCallback() {
+    adinchLayout.setAdsCallback(new IAdsAdinchCallback() {
         @Override
         public void onAdsLoadingOk() {
         }
