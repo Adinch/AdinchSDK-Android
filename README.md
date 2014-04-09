@@ -69,4 +69,3 @@ in the initialization method activity register:
 
 This part of our functionality meets the requirements of <a href=http://www.apache.org/licenses/LICENSE-2.0.html>Apache License, Version 2.0</a>. All copyrights respected.
 
-The development is based on <a href=http://code.google.com/p/adwhirl/>the source codes</a> of <a href=https://www.adwhirl.com/>AdWhirl.</a>
